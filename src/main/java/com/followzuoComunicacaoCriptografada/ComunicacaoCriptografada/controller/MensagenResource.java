@@ -55,7 +55,7 @@ public class MensagenResource {
                     "FZUP_COMMAND = smsg",
                     "FZUP_USER    = " + user.get(1),
                     "FZUP_MSGTEXT = " +lista.toString()});
-            System.out.println("------------------------\n\n\n"+user.toString()+" -- lista todos------------------------\n\n\n");
+            System.out.println("------------------------\n\n\n"+user.toString()+" -- lista todos------------------------\n\n\n"+result);
             return result;
         } else {
             novaMensagen = new BancoDeMensagens();
@@ -66,7 +66,7 @@ public class MensagenResource {
                     "FZUP_COMMAND = smsg",
                     "FZUP_USER    = " + user.get(1),
                     "FZUP_MSGTEXT = MENSAGEM SALVA NO REPOSITORIO"});
-            System.out.println("------------------------\n\n\n"+user.toString()+" -- Salva Mensagem"+user.get(1)+"------------------------\n\n\n");
+            System.out.println("------------------------\n\n\n"+user.toString()+" -- Salva Mensagem"+user.get(1)+"------------------------\n\n\n"+result);
             return result;
         }
     }
