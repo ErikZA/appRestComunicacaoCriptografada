@@ -19,7 +19,7 @@ public class MensagenResource {
     @Autowired
     private BancoDeMensagensRepository BancoDeMensagensRepository;
 
-    private fzup_caxkkt2b6z2u fll = new fzup_caxkkt2b6z2u();
+    private fzup_caz52ehed5hp fll = new fzup_caz52ehed5hp();
 
     private BancoDeMensagens novaMensagen;
 

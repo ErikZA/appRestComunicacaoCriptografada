@@ -22,8 +22,4 @@ public class BancoDeMensagens implements Serializable {
 
     private String mensagemRecebida;
 
-    private String mensagemEnviada;
-
-
-
 }
