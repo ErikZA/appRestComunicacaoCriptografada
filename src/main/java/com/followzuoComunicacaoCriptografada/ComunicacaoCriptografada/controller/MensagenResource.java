@@ -50,7 +50,7 @@ public class MensagenResource {
         List<String> user = Arrays.asList(usermessage.split(";"));
         System.out.println("------------------------\n\n\n"+user.toString()+"------------------------\n\n\n");
         List<BancoDeMensagens> lista = BancoDeMensagensRepository.findAllByUserID(user.get(1));
-        if (user.get(2).equalsIgnoreCase("ListAll()")) {
+        if (user.get(2).equalsIgnoreCase("ListAll")) {
             String[] result = fll.submit(new String[]{
                     "FZUP_COMMAND = smsg",
                     "FZUP_USER    = " + user.get(1),
