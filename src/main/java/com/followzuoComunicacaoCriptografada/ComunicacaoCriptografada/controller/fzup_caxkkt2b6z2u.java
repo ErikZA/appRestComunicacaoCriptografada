@@ -1,4 +1,4 @@
-package com.followzuoComunicacaoCriptografada.ComunicacaoCriptografada.conrtroller;// ========================================================================================
+package com.followzuoComunicacaoCriptografada.ComunicacaoCriptografada.controller;// ========================================================================================
 //
 //   FOLLOWZUP PROJECT
 //

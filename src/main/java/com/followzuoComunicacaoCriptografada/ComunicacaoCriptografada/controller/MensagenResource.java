@@ -1,6 +1,6 @@
-package com.followzuoComunicacaoCriptografada.ComunicacaoCriptografada.conrtroller;
-import com.followzuoComunicacaoCriptografada.ComunicacaoCriptografada.dominio.responseTabel;
-import com.followzuoComunicacaoCriptografada.ComunicacaoCriptografada.dominio.responseTabelRepository;
+package com.followzuoComunicacaoCriptografada.ComunicacaoCriptografada.controller;
+import com.followzuoComunicacaoCriptografada.ComunicacaoCriptografada.dominio.BancoDeMensagens;
+import com.followzuoComunicacaoCriptografada.ComunicacaoCriptografada.dominio.BancoDeMensagensRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,23 +14,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api")
-public class mensagemResource {
+public class MensagenResource {
 
     @Autowired
-    private responseTabelRepository responseTabelRepository;
+    private BancoDeMensagensRepository BancoDeMensagensRepository;
 
     private fzup_caxkkt2b6z2u fll = new fzup_caxkkt2b6z2u();
 
-    private responseTabel novaMensagen;
+    private BancoDeMensagens novaMensagen;
 
-    public mensagemResource() throws Exception {
+    public MensagenResource() throws Exception {
     }
 
     @GetMapping("/mensagem")
     public String chamaMensagem(){
        // bancoDeMensagens banco= new bancoDeMensagens();
        // banco.salvaMensagens();
-       //List<responseTabel> lista = responseTabelRepository.findAll();
+       //List<BancoDeMensagens> lista = BancoDeMensagensRepository.findAll();
        return "Cara sucesso";
     }
 
@@ -39,7 +39,7 @@ public class mensagemResource {
         System.out.println(request.toString());
         // bancoDeMensagens banco= new bancoDeMensagens();
         // banco.salvaMensagens();
-        //List<responseTabel> lista = responseTabelRepository.findAll();
+        //List<BancoDeMensagens> lista = BancoDeMensagensRepository.findAll();
     }
 
     @PostMapping("/salvaCripto")
@@ -49,7 +49,7 @@ public class mensagemResource {
         String usermessage = fll.decrypt(encrypt_string);
         List<String> user = Arrays.asList(usermessage.split(";"));
         System.out.println("------------------------\n\n\n"+user.toString()+"------------------------\n\n\n");
-        List<responseTabel> lista = responseTabelRepository.findAllByUserID(user.get(1));
+        List<BancoDeMensagens> lista = BancoDeMensagensRepository.findAllByUserID(user.get(1));
         if (user.get(2).equalsIgnoreCase("ListAll()")) {
             String[] result = fll.submit(new String[]{
                     "FZUP_COMMAND = smsg",
@@ -58,10 +58,10 @@ public class mensagemResource {
 
             return result;
         } else {
-            novaMensagen = new responseTabel();
+            novaMensagen = new BancoDeMensagens();
             novaMensagen.setUserID(user.get(1));
             novaMensagen.setMensagemRecebida(user.get(2));
-            responseTabelRepository.save(novaMensagen);
+            BancoDeMensagensRepository.save(novaMensagen);
             String[] result = fll.submit(new String[]{
                     "FZUP_COMMAND = smsg",
                     "FZUP_USER    = " + user.get(1),

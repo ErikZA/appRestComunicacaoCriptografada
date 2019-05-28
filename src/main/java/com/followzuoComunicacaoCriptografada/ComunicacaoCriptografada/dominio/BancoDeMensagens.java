@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class responseTabel implements Serializable {
+public class BancoDeMensagens implements Serializable {
 
     @Id @GeneratedValue
     private Long id;

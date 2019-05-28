@@ -4,8 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface responseTabelRepository extends JpaRepository<responseTabel, Long> {
+public interface BancoDeMensagensRepository extends JpaRepository<BancoDeMensagens, Long> {
 
-
-    List<responseTabel> findAllByUserID(String userID);
+    List<BancoDeMensagens> findAllByUserID(String userID);
 }
