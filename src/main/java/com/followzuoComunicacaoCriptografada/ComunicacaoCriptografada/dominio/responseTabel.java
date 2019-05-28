@@ -6,32 +6,25 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class responseTabel implements Serializable {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @Id @GeneratedValue
+    private Long id;
 
-    private String usuario;
+    private String userID;
 
     private String mensagemRecebida;
 
     private String mensagemEnviada;
 
 
-    public responseTabel(Long id, String mensagemRecebida, String mensagemEnviada, String usuario) {
-        this.usuario = usuario;
-        this.id = id;
-        this.mensagemRecebida = mensagemRecebida;
-        this.mensagemEnviada = mensagemEnviada;
-    }
 
-    public responseTabel() {
-        super();
-    }
 }

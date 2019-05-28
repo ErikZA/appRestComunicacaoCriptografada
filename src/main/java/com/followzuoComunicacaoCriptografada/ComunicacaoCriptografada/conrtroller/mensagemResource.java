@@ -1,4 +1,5 @@
 package com.followzuoComunicacaoCriptografada.ComunicacaoCriptografada.conrtroller;
+import com.followzuoComunicacaoCriptografada.ComunicacaoCriptografada.dominio.responseTabel;
 import com.followzuoComunicacaoCriptografada.ComunicacaoCriptografada.dominio.responseTabelRepository;
 import com.followzuoComunicacaoCriptografada.ComunicacaoCriptografada.library.bancoDeMensagens;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +47,12 @@ public class mensagemResource {
         String encrypt_string = request.getParameter("fzupresponse");
         String usermessage = fll.decrypt(encrypt_string);
         List<String> user = Arrays.asList(usermessage.split(";"));
+        List<responseTabel> lista = responseTabelRepository.findAllByUserID(user.get(1));
         if (user.get(2).equalsIgnoreCase("ListAll()")) {
             String[] result = fll.submit(new String[]{
                     "FZUP_COMMAND = smsg",
                     "FZUP_USER    = " + user.get(1),
-                    "FZUP_MSGTEXT = " + responseTabelRepository.findAll(user.get(1))});
+                    "FZUP_MSGTEXT = " +lista.toString()});
 
             return result;
         } else {
@@ -62,4 +64,6 @@ public class mensagemResource {
             return result;
         }
     }
+
+
 }

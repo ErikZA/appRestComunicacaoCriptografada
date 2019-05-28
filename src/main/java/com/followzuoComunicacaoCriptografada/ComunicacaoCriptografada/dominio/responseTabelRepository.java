@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface responseTabelRepository extends JpaRepository<responseTabel, Long> {
 
-    List<responseTabel> findAll(String usuario);
+
+    List<responseTabel> findAllByUserID(String userID);
 }
