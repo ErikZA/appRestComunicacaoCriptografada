@@ -44,17 +44,21 @@ public class MensagenResource {
 
     @PostMapping("/salvaCripto")
     public String[] retornaMensagens(HttpServletRequest request) throws Exception {
-        //System.out.println(request.toString());
+        String minhasMensagens = "MInhas Mensagens: \n";
         String encrypt_string = request.getParameter("fzupresponse");
         String usermessage = fll.decrypt(encrypt_string);
         List<String> user = Arrays.asList(usermessage.split(";"));
-        System.out.println("------------------------\n\n\n"+user.toString()+"------------------------\n\n\n");
+        //System.out.println("------------------------\n\n\n"+user.toString()+"------------------------\n\n\n");
         List<BancoDeMensagens> lista = BancoDeMensagensRepository.findAllByUserID(user.get(1));
+        for(BancoDeMensagens temp : lista){
+           minhasMensagens += temp.getMensagemRecebida();
+           minhasMensagens += "\n";
+        }
         if (user.get(2).equalsIgnoreCase("ListAll")) {
             String[] result = fll.submit(new String[]{
                     "FZUP_COMMAND = smsg",
                     "FZUP_USER    = " + user.get(1),
-                    "FZUP_MSGTEXT = " +lista.toString()});
+                    "FZUP_MSGTEXT = " +minhasMensagens});
             System.out.println("------------------------\n\n\n"+user.toString()+" -- lista todos------------------------"+lista.toString()+"\n\n\n"+result);
             return result;
         } else {
