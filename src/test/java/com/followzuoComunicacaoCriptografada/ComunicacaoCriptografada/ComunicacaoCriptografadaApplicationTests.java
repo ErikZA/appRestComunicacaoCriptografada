@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -39,7 +38,7 @@ public class ComunicacaoCriptografadaApplicationTests {
 		responseTabel2.setUserID("111");
 		responseTabelRepository.save(responseTabel2);
 		List<responseTabel> lista = responseTabelRepository.findAllByUserID("123");
-		System.out.println(lista.toString());
+		System.out.println("------------------------\n\n\n"+lista.toString()+"------------------------\n\n\n");
 		assertEquals(lista.get(1).getUserID(),"123");
 	}
 
